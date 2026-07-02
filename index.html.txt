@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rating Request Form</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #0A5E2A;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.readonly {
+    background-color: #f0f0f0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Add / Delete Rating Request</h2>
+
+    <label>Requestor</label>
+    <input type="text" id="requestor">
+
+    <label>PRN</label>
+    <input type="text" id="prn">
+
+    <label>Email Address</label>
+    <input type="email" id="email" class="readonly" readonly>
+
+    <label>Phone Number</label>
+    <input type="text" id="phone" class="readonly" readonly>
+
+    <label>Location</label>
+    <input type="text" id="location" class="readonly" readonly>
+
+    <label>Date</label>
+    <input type="date" id="date" class="readonly" readonly>
+
+    <label>Cost Center Manager</label>
+    <select id="manager">
+        <option value="">Select Manager</option>
+        <option>Manager 1</option>
+        <option>Manager 2</option>
+        <option>Manager 3</option>
+    </select>
+
+    <label>Department Director</label>
+    <select id="director">
+        <option value="">Select Director</option>
+        <option>Director 1</option>
+        <option>Director 2</option>
+        <option>Director 3</option>
+    </select>
+
+    <label>Department</label>
+    <select id="department">
+        <option value="">Select Department</option>
+        <option>Engineering</option>
+        <option>Operations</option>
+        <option>Finance</option>
+        <option>HR</option>
+    </select>
+</div>
+
+<script>
+// Auto-fill current date
+document.getElementById('date').value =
+    new Date().toISOString().split('T')[0];
+
+// Temporary placeholder values
+document.getElementById('email').value =
+    'name@saudiatechnic.com';
+
+document.getElementById('phone').value =
+    '+966XXXXXXXXX';
+
+document.getElementById('location').value =
+    'Jeddah';
+</script>
+
+</body>
+</html>
