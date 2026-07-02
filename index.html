@@ -1,115 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rating Request Form</title>
+    <meta charset="UTF-8">
+    <title>Rating Request Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 30px;
+        }
 
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-.container {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+        h2 {
+            color: #003366;
+        }
 
-h2 {
-    text-align: center;
-    color: #0A5E2A;
-}
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-}
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
 
-.readonly {
-    background-color: #f0f0f0;
-}
-</style>
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .section {
+            display: none;
+            margin-top: 20px;
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .required {
+            color: red;
+        }
+
+        button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004a99;
+        }
+    </style>
 </head>
-
 <body>
 
 <div class="container">
-    <h2>Add / Delete Rating Request</h2>
 
-    <label>Requestor</label>
-    <input type="text" id="requestor">
+    <h2>Rating Request Form</h2>
 
-    <label>PRN</label>
-    <input type="text" id="prn">
+    <div class="form-group">
+        <label for="requestType">Request Type</label>
+        <select id="requestType" onchange="showSection()">
+            <option value="">-- Select --</option>
+            <option value="add">Add Rating</option>
+            <option value="delete">Delete Rating</option>
+        </select>
+    </div>
 
-    <label>Email Address</label>
-    <input type="email" id="email" class="readonly" readonly>
+    <!-- Add Rating Section -->
+    <div id="addSection" class="section">
+        <h3>Add Rating</h3>
 
-    <label>Phone Number</label>
-    <input type="text" id="phone" class="readonly" readonly>
+        <div class="form-group">
+            <label>A/C Type <span class="required">*</span></label>
+            <input type="text">
+        </div>
 
-    <label>Location</label>
-    <input type="text" id="location" class="readonly" readonly>
+        <div class="form-group">
+            <label>Authority <span class="required">*</span></label>
+            <input type="text">
+        </div>
 
-    <label>Date</label>
-    <input type="date" id="date" class="readonly" readonly>
+        <div class="form-group">
+            <label>Scope <span class="required">*</span></label>
+            <input type="text">
+        </div>
 
-    <label>Cost Center Manager</label>
-    <select id="manager">
-        <option value="">Select Manager</option>
-        <option>Manager 1</option>
-        <option>Manager 2</option>
-        <option>Manager 3</option>
-    </select>
+        <div class="form-group">
+            <label>Customer <span class="required">*</span></label>
+            <input type="text">
+        </div>
 
-    <label>Department Director</label>
-    <select id="director">
-        <option value="">Select Director</option>
-        <option>Director 1</option>
-        <option>Director 2</option>
-        <option>Director 3</option>
-    </select>
+        <div class="form-group">
+            <label>Type of Maintenance <span class="required">*</span></label>
+            <input type="text">
+        </div>
 
-    <label>Department</label>
-    <select id="department">
-        <option value="">Select Department</option>
-        <option>Engineering</option>
-        <option>Operations</option>
-        <option>Finance</option>
-        <option>HR</option>
-    </select>
+        <div class="form-group">
+            <label>Location <span class="required">*</span></label>
+            <input type="text">
+        </div>
+    </div>
+
+    <!-- Delete Rating Section -->
+    <div id="deleteSection" class="section">
+        <h3>Delete Rating</h3>
+
+        <div class="form-group">
+            <label>Justification <span class="required">*</span></label>
+            <textarea></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>A/C Type <span class="required">*</span></label>
+            <input type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Authority <span class="required">*</span></label>
+            <input type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Scope <span class="required">*</span></label>
+            <input type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Customer (Optional)</label>
+            <input type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Type of Maintenance <span class="required">*</span></label>
+            <input type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Location <span class="required">*</span></label>
+            <input type="text">
+        </div>
+    </div>
+
+    <br>
+    <button type="submit">Submit</button>
+
 </div>
 
 <script>
-// Auto-fill current date
-document.getElementById('date').value =
-    new Date().toISOString().split('T')[0];
+    function showSection() {
+        const type = document.getElementById("requestType").value;
 
-// Temporary placeholder values
-document.getElementById('email').value =
-    'name@saudiatechnic.com';
+        document.getElementById("addSection").style.display = "none";
+        document.getElementById("deleteSection").style.display = "none";
 
-document.getElementById('phone').value =
-    '+966XXXXXXXXX';
+        if (type === "add") {
+            document.getElementById("addSection").style.display = "block";
+        }
 
-document.getElementById('location').value =
-    'Jeddah';
+        if (type === "delete") {
+            document.getElementById("deleteSection").style.display = "block";
+        }
+    }
 </script>
 
 </body>
